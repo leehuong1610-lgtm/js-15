@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff5f5 0%, #f0fff4 100%);
+            --container-bg: rgba(255, 255, 255, 0.7);
+            --accent-soft: #e6fffa;
+            --accent-main: #68d391;
+            --header-text: #2d3748;
+            --text-main: #4a5568;
+            --text-sub: #718096;
+            --white: #ffffff;
+            --shadow-soft: 0 15px 35px -5px rgba(154, 103, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--container-bg);
+            backdrop-filter: blur(15px);
+            padding: 45px;
+            border-radius: 45px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-section h1 {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--header-text);
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .header-section p {
+            color: var(--text-sub);
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 28px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .faq-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+        }
+
+        .faq-header {
+            padding: 22px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .faq-header span {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--header-text);
+        }
+
+        .icon-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .faq-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--accent-main);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-body {
+            padding: 0 28px 25px 28px;
+            color: var(--text-sub);
+            font-size: 14.5px;
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active {
+            background: #ffffff;
+            border-color: var(--accent-soft);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .faq-item.active .icon-box {
+            background: var(--accent-main);
+        }
+
+        .faq-item.active .faq-icon {
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-body {
+            opacity: 1;
+            transform: translateY(0);
+            padding-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 11px;
+            color: #cbd5e0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>Góc giải đáp</h1>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-header">
+                    <span>Nên học ngôn ngữ nào đầu tiên?</span>
+                    <div class="icon-box">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-body">
+                        Python (cho cơ bản) hoặc JavaScript (cho Web). Quan trọng nhất là nắm vững tư duy lập trình.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-header">
+                    <span>Frontend và Backend khác nhau gì?</span>
+                    <div class="icon-box">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-body">
+                        Frontend lo về giao diện người dùng, Backend xử lý dữ liệu và logic máy chủ.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-header">
+                    <span>Git và GitHub có giống nhau?</span>
+                    <div class="icon-box">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-body">
+                        Không. Git là công cụ quản lý trên máy tính, GitHub là nền tảng lưu trữ và làm việc nhóm trực tuyến.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-header">
+                    <span>Cách fix bug hiệu quả?</span>
+                    <div class="icon-box">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-body">
+                        Đọc kỹ lỗi, dùng công cụ Debug và dành thời gian nghỉ ngơi để làm mới đầu óc khi bế tắc.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-header">
+                    <span>Mất bao lâu để có thể đi làm?</span>
+                    <div class="icon-box">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-body">
+                        Trung bình từ 6 tháng đến 1 năm luyện tập tập trung. Bạn cần học hỏi liên tục để thích nghi.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">Dev Quick Support</div>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const isOpen = element.classList.contains('active');
+            const allItems = document.querySelectorAll('.faq-item');
+            for (let item of allItems) {
+                item.classList.remove('active');
+            }
+            if (!isOpen) {
+                element.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
