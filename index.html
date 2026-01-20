@@ -77,14 +77,15 @@
         .faq-item {
             background: var(--white);
             border-radius: 28px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
             cursor: pointer;
             border: 2px solid transparent;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            will-change: transform; 
         }
 
         .faq-item:hover {
-            transform: scale(1.02);
+            transform: translateY(-2px); 
             box-shadow: 0 10px 20px rgba(0,0,0,0.04);
         }
 
@@ -100,6 +101,7 @@
             font-size: 16px;
             font-weight: 600;
             color: var(--header-text);
+            line-height: 1.4;
         }
 
         .icon-box {
@@ -110,20 +112,34 @@
             align-items: center;
             justify-content: center;
             background: #f8fafc;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
+            flex-shrink: 0;
         }
 
-        .faq-icon {
-            width: 18px;
-            height: 18px;
-            color: var(--accent-main);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        .css-chevron {
+            width: 8px;
+            height: 8px;
+            border-bottom: 3px solid var(--accent-main);
+            border-right: 3px solid var(--accent-main);
+            transform: rotate(45deg);
+            margin-top: -4px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+            border-radius: 1px;
         }
 
         .faq-content {
-            max-height: 0;
+            display: grid;
+            grid-template-rows: 0fr; 
+            transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
-            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.active .faq-content {
+            grid-template-rows: 1fr; 
+        }
+
+        .faq-body-wrapper {
+            min-height: 0; 
         }
 
         .faq-body {
@@ -132,41 +148,39 @@
             font-size: 14.5px;
             line-height: 1.7;
             opacity: 0;
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
         .faq-item.active {
             background: #ffffff;
             border-color: var(--accent-soft);
             box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            transform: translateY(0); 
         }
 
         .faq-item.active .icon-box {
             background: var(--accent-main);
         }
 
-        .faq-item.active .faq-icon {
-            color: white;
-            transform: rotate(180deg);
-        }
-
-        .faq-item.active .faq-content {
-            max-height: 200px;
+        .faq-item.active .css-chevron {
+            transform: rotate(-135deg);
+            margin-top: 4px;
+            border-color: white;
         }
 
         .faq-item.active .faq-body {
             opacity: 1;
-            transform: translateY(0);
             padding-top: 10px;
         }
+
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="header-section">
-            <h1>Góc giải đáp</h1>
+            <h1>Hỏi Đáp Lập Trình</h1>
+            <p>Giải đáp ngắn gọn cho người mới</p>
         </div>
         
         <div class="faq-list">
@@ -174,12 +188,14 @@
                 <div class="faq-header">
                     <span>Nên học ngôn ngữ nào đầu tiên?</span>
                     <div class="icon-box">
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <div class="css-chevron"></div>
                     </div>
                 </div>
                 <div class="faq-content">
-                    <div class="faq-body">
-                        Python (cho cơ bản) hoặc JavaScript (cho Web). Quan trọng nhất là nắm vững tư duy lập trình.
+                    <div class="faq-body-wrapper">
+                        <div class="faq-body">
+                            Python (cho cơ bản) hoặc JavaScript (cho Web). Quan trọng nhất là nắm vững tư duy lập trình.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -188,12 +204,14 @@
                 <div class="faq-header">
                     <span>Frontend và Backend khác nhau gì?</span>
                     <div class="icon-box">
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <div class="css-chevron"></div>
                     </div>
                 </div>
                 <div class="faq-content">
-                    <div class="faq-body">
-                        Frontend lo về giao diện người dùng, Backend xử lý dữ liệu và logic máy chủ.
+                    <div class="faq-body-wrapper">
+                        <div class="faq-body">
+                            Frontend lo về giao diện người dùng, Backend xử lý dữ liệu và logic máy chủ.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -202,12 +220,14 @@
                 <div class="faq-header">
                     <span>Git và GitHub có giống nhau?</span>
                     <div class="icon-box">
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <div class="css-chevron"></div>
                     </div>
                 </div>
                 <div class="faq-content">
-                    <div class="faq-body">
-                        Không. Git là công cụ quản lý trên máy tính, GitHub là nền tảng lưu trữ và làm việc nhóm trực tuyến.
+                    <div class="faq-body-wrapper">
+                        <div class="faq-body">
+                            Không. Git là công cụ quản lý trên máy tính, GitHub là nền tảng lưu trữ và làm việc nhóm trực tuyến.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,12 +236,14 @@
                 <div class="faq-header">
                     <span>Cách fix bug hiệu quả?</span>
                     <div class="icon-box">
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <div class="css-chevron"></div>
                     </div>
                 </div>
                 <div class="faq-content">
-                    <div class="faq-body">
-                        Đọc kỹ lỗi, dùng công cụ Debug và dành thời gian nghỉ ngơi để làm mới đầu óc khi bế tắc.
+                    <div class="faq-body-wrapper">
+                        <div class="faq-body">
+                            Đọc kỹ lỗi, dùng công cụ Debug và dành thời gian nghỉ ngơi để làm mới đầu óc khi bế tắc.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -230,25 +252,30 @@
                 <div class="faq-header">
                     <span>Mất bao lâu để có thể đi làm?</span>
                     <div class="icon-box">
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <div class="css-chevron"></div>
                     </div>
                 </div>
                 <div class="faq-content">
-                    <div class="faq-body">
-                        Trung bình từ 6 tháng đến 1 năm luyện tập tập trung. Bạn cần học hỏi liên tục để thích nghi.
+                    <div class="faq-body-wrapper">
+                        <div class="faq-body">
+                            Trung bình từ 6 tháng đến 1 năm luyện tập tập trung. Bạn cần học hỏi liên tục để thích nghi.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <script>
         function toggleFAQ(element) {
             const isOpen = element.classList.contains('active');
             const allItems = document.querySelectorAll('.faq-item');
+            
             for (let item of allItems) {
                 item.classList.remove('active');
             }
+            
             if (!isOpen) {
                 element.classList.add('active');
             }
